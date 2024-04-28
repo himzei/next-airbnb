@@ -1,0 +1,74 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { Heart, Loader2 } from "lucide-react";
+import { useFormStatus } from "react-dom";
+
+export default function CreationSubmit() {
+  const { pending } = useFormStatus();
+  return (
+    <div>
+      {pending ? (
+        <Button disabled size="lg">
+          <Loader2 className="mr-2 size-4 animate-spin " />
+          Please wait
+        </Button>
+      ) : (
+        <Button type="submit" size="lg">
+          Next
+        </Button>
+      )}
+    </div>
+  );
+}
+
+export function AddToFavoriteButton() {
+  const { pending } = useFormStatus();
+  return (
+    <>
+      {pending ? (
+        <Button variant="outline" size="icon" className="bg-primary-foreground">
+          <Loader2 className="size-4 animate-spin text-primary" />
+        </Button>
+      ) : (
+        <Button variant="outline" size="icon" className="bg-primary-foreground">
+          <Heart className="size-4" />
+        </Button>
+      )}
+    </>
+  );
+}
+
+export function DeleteFromFavoriteButton() {
+  const { pending } = useFormStatus();
+  return (
+    <>
+      {pending ? (
+        <Button variant="outline" size="icon" className="bg-primary-foreground">
+          <Loader2 className="size-4 animate-spin text-primary" />
+        </Button>
+      ) : (
+        <Button variant="outline" size="icon" className="bg-primary-foreground">
+          <Heart className="size-4 text-primary" fill="#e21c49" />
+        </Button>
+      )}
+    </>
+  );
+}
+
+export function ReservationSubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <>
+      {pending ? (
+        <Button className="w-full" disabled>
+          <Loader2 className="size-4 animate-spin mr-2" /> Please wait...
+        </Button>
+      ) : (
+        <Button className="w-full" type="submit">
+          Make a reservation
+        </Button>
+      )}
+    </>
+  );
+}
